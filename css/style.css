@@ -190,7 +190,7 @@ a { color: inherit; }
 }
 .hero__bg--alt { opacity: 0; will-change: opacity; }
 .hero--xfade .hero__bg--alt {
-  animation: hero-crossfade 7s ease-in-out infinite;
+  animation: hero-crossfade 10s ease-in-out infinite;
 }
 .hero__veil {
   position: absolute;
