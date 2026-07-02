@@ -177,13 +177,18 @@
             <h3 class="card__title">いえない悩みを、話す</h3>
             <p class="card__text">職場でも家庭でもいえないことを、トレーニングの合間にぽつりぽつりと。話すことも、自分を整えることのひとつです。</p>
           </article>
-        </div>
-        <!-- 「動かす」×「話す」の先にある結果 -->
-        <div class="features__result">
-          <span class="features__result-arrow" aria-hidden="true">↓</span>
-          <p class="features__result-lead">動かして、話して、その先に。</p>
-          <h3 class="features__result-title">なりたい自分になれる</h3>
-          <p class="features__result-text">心の重荷を降ろしながら、身体も少しずつ変わっていく。気づけば姿勢が変わり、体型が変わり、毎日が軽やかになっていく。ひとやすみは、なりたい自分に近づいていくための場所です。</p>
+          <article class="card">
+            <div class="card__visual">
+              <!-- TODO: 「結果」を表すシーン写真が用意できたら差し替え -->
+              <img class="card__img" src="assets/img/ebisu-gym.jpg"
+                   srcset="assets/img/ebisu-gym-960.jpg 960w, assets/img/ebisu-gym.jpg 1600w"
+                   sizes="(min-width: 768px) 33vw, 100vw"
+                   alt="整えられた店内で軽やかに過ごすイメージ" width="1600" height="1193" loading="lazy">
+              <span class="card__image-note">イメージ</span>
+            </div>
+            <h3 class="card__title">気づけば、身体も変わっている</h3>
+            <p class="card__text">心の重荷を降ろしながら、続けるうちに姿勢が変わり、体型が変わり、毎日が軽やかになっていく。ひとやすみは、なりたい自分に近づいていくための場所です。</p>
+          </article>
         </div>
         <div class="cta cta--mid">
           <!-- TODO: LINE友だち追加URLに差し替え -->
@@ -201,7 +206,7 @@
       <div class="container">
         <p class="section__eyebrow">OUR LOCATIONS</p>
         <h2 class="section__title">自分を整える、二つの場所</h2>
-        <p class="locations__lead">落ち着いて自分の身体と向き合えるよう、どちらの店舗も人目を気にせず過ごせるプライベートな空間です。</p>
+        <p class="locations__lead">どちらの店舗も完全予約制・一組貸切。あなたの時間は、あなたとトレーナーだけの空間です。誰かの目を気にせず、落ち着いて自分の身体と向き合えます。</p>
         <div class="locations__grid">
           <figure class="location">
             <div class="location__visual">
@@ -284,10 +289,10 @@
     <section class="pricing section section--alt fade-in">
       <div class="container">
         <h2 class="section__title">料金プラン</h2>
-        <p class="pricing__lead">入会金などの追加費用はありません。表示されている料金のみをお支払いいただきます。</p>
+        <p class="pricing__lead">入会金など追加費用はありません。</p>
         <div class="pricing__groups">
           <div class="pricing__group">
-            <h3 class="pricing__group-title">定額プラン<span class="pricing__group-sub">毎月のお支払い</span></h3>
+            <h3 class="pricing__group-title">定額プラン<span class="pricing__group-sub">毎月のお支払い|1回60分・税込</span></h3>
             <ul class="price-table">
               <li class="price-table__row"><span class="price-table__label">月2回</span><span class="price-table__price">¥18,150</span></li>
               <li class="price-table__row"><span class="price-table__label">月4回</span><span class="price-table__price">¥36,058</span></li>
@@ -296,7 +301,7 @@
             </ul>
           </div>
           <div class="pricing__group">
-            <h3 class="pricing__group-title">回数券<span class="pricing__group-sub">有効期限なし</span></h3>
+            <h3 class="pricing__group-title">回数券<span class="pricing__group-sub">有効期限なし|1回60分・税込</span></h3>
             <ul class="price-table">
               <li class="price-table__row"><span class="price-table__label">4回</span><span class="price-table__price">¥41,410</span></li>
               <li class="price-table__row"><span class="price-table__label">8回</span><span class="price-table__price">¥81,312</span></li>
@@ -306,7 +311,6 @@
           </div>
         </div>
         <ul class="pricing__notes">
-          <li class="pricing__note">すべて1回60分・税込です。</li>
           <li class="pricing__note">恵比寿店限定で、毎週火曜日は理学療法士による整体を受けることもできます。</li>
         </ul>
         <p class="pricing__pair">パートナーやご友人、ご家族とのペアトレーニングは、1名分の料金のままご利用いただけます。</p>
@@ -373,8 +377,16 @@
           <p class="faq__a">はい。パートナーやご友人、ご家族とのペアトレーニングを、1名分の料金のままご利用いただけます。</p>
         </details>
         <details class="faq__item">
+          <summary class="faq__q">予約の変更やキャンセルはできますか?</summary>
+          <p class="faq__a">原則12時間前までとしておりますが、体調不良やお仕事の都合などは考慮して対応いたします。LINEでお気軽にご連絡ください。</p>
+        </details>
+        <details class="faq__item">
           <summary class="faq__q">持ち物は何が必要ですか?</summary>
           <p class="faq__a">手ぶらでお越しください。ウェア・シューズ・お水・タオルはすべてご用意しています。</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">シャワーはありますか?</summary>
+          <p class="faq__a">恵比寿店のみご利用いただけます。</p>
         </details>
       </div>
     </section>
@@ -388,8 +400,7 @@
             <h3 class="access__store">恵比寿店</h3>
             <dl class="access__info">
               <div class="access__row"><dt>住所</dt><dd>〒150-0022 東京都渋谷区恵比寿南2丁目19-7 VORT恵比寿Dual s201</dd></div>
-              <!-- TODO: 恵比寿駅からの徒歩分数を確認 -->
-              <div class="access__row"><dt>最寄駅</dt><dd>JR・東京メトロ「恵比寿駅」徒歩◯分</dd></div>
+              <div class="access__row"><dt>最寄駅</dt><dd>JR・東京メトロ「恵比寿駅」徒歩5分</dd></div>
               <div class="access__row"><dt>営業時間</dt><dd>7:00–23:00</dd></div>
               <div class="access__row"><dt>定休日</dt><dd>なし</dd></div>
             </dl>
@@ -400,8 +411,7 @@
             <h3 class="access__store">小岩店</h3>
             <dl class="access__info">
               <div class="access__row"><dt>住所</dt><dd>〒133-0056 東京都江戸川区南小岩6-27-13 SKビル3階</dd></div>
-              <!-- TODO: 小岩駅からの徒歩分数を確認 -->
-              <div class="access__row"><dt>最寄駅</dt><dd>JR総武線「小岩駅」徒歩◯分</dd></div>
+              <div class="access__row"><dt>最寄駅</dt><dd>JR総武線「小岩駅」徒歩5分</dd></div>
               <div class="access__row"><dt>営業時間</dt><dd>7:00–23:00</dd></div>
               <div class="access__row"><dt>定休日</dt><dd>なし</dd></div>
             </dl>
