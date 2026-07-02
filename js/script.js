@@ -1,6 +1,19 @@
 // ひとやすみ LP — フェードイン / 追従CTA / 計測
-// JSが有効な時だけフェードインの初期非表示を適用する(.jsゲート)
-document.documentElement.classList.add('js');
+// ※ .jsゲートのclass付与はFOUC防止のため index.html の<head>内インラインscriptで行う
+
+// ----------------------------------------------------------
+// ヒーロー2枚目(恵比寿店): LCPと帯域を奪い合わないよう、
+// ページロード完了後にsrcを注入し、画像ロード完了後にクロスフェード開始
+// ----------------------------------------------------------
+window.addEventListener('load', () => {
+  const alt = document.querySelector('.hero__bg--alt');
+  if (!alt || !alt.dataset.src) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const start = () => document.getElementById('hero').classList.add('hero--xfade');
+  alt.addEventListener('load', start, { once: true });
+  alt.srcset = alt.dataset.srcset;
+  alt.src = alt.dataset.src;
+});
 
 // ----------------------------------------------------------
 // GA4 — 測定IDを設定すると有効になる。未設定なら何も読み込まない
@@ -59,7 +72,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
       fadeObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0, rootMargin: '0px 0px -12% 0px' }); // 背の高いセクションでも発火が遅れない
 
 document.querySelectorAll('.fade-in').forEach((el) => fadeObserver.observe(el));
 
@@ -82,12 +95,13 @@ function updateStickyCta() {
   document.body.classList.toggle('has-sticky-cta', show);
 }
 
-new IntersectionObserver(([entry]) => {
-  heroPassed = !entry.isIntersecting;
+// コールバックは複数エントリをバッチで受け取ることがあるため、常に最新のエントリで判定する
+new IntersectionObserver((entries) => {
+  heroPassed = !entries[entries.length - 1].isIntersecting;
   updateStickyCta();
 }).observe(hero);
 
-new IntersectionObserver(([entry]) => {
-  closingVisible = entry.isIntersecting;
+new IntersectionObserver((entries) => {
+  closingVisible = entries[entries.length - 1].isIntersecting;
   updateStickyCta();
 }, { threshold: 0.2 }).observe(closing);

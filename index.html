@@ -4,64 +4,110 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ひとやすみ|仕事帰りに、心と身体を整えるパーソナルジム(江戸川区・小岩)</title>
-  <meta name="description" content="ここは、心の重荷を降ろす習慣をつくる場所。身体と心の状態にあわせて身体を動かし、いえない悩みを話す。江戸川区南小岩のプライベートジム「ひとやすみ」。朝7時〜23時・定休日なし。無料体験受付中、まずはLINEからご予約を。">
+  <title>ひとやすみ|仕事帰りに、心と身体を整えるパーソナルジム(恵比寿・小岩)</title>
+  <meta name="description" content="ここは、心の重荷を降ろす習慣をつくる場所。身体と心の状態にあわせて身体を動かし、いえない悩みを話す。恵比寿・小岩のプライベートジム「ひとやすみ」。朝7時〜23時・定休日なし。無料体験受付中、まずはLINEからご予約を。">
   <meta name="theme-color" content="#3A322C">
+
+  <!-- .jsゲートは初回ペイント前に付与しないとフェードイン要素がちらつく(FOUC) -->
+  <script>document.documentElement.classList.add('js')</script>
 
   <!--
     ▼ 絶対URLはここに集約。独自ドメイン移行時はこのブロックだけ書き換える。
-    TODO: GitHub Pages公開後に実URLへ差し替え
   -->
-  <link rel="canonical" href="https://example.github.io/hitoyasumi/">
+  <link rel="canonical" href="https://hirosetoya-maker.github.io/hitoyasumi/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="ひとやすみ|仕事帰りに、心と身体を整えるパーソナルジム">
   <meta property="og:description" content="ここは、心の重荷を降ろす習慣をつくる場所。無料体験受付中。まずは試しにひとやすみしに来てください。">
-  <meta property="og:url" content="https://example.github.io/hitoyasumi/">
-  <meta property="og:image" content="https://example.github.io/hitoyasumi/assets/img/ogp.png"><!-- TODO: OGP画像(1200x630)制作後に有効 -->
+  <meta property="og:url" content="https://hirosetoya-maker.github.io/hitoyasumi/">
+  <meta property="og:image" content="https://hirosetoya-maker.github.io/hitoyasumi/assets/img/koiwa-gym.jpg"><!-- TODO: 専用OGP画像(1200x630)制作後に差し替え -->
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="904">
+  <meta property="og:site_name" content="ひとやすみ">
   <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
   <!-- ▲ 絶対URLここまで -->
 
-  <link rel="icon" href="favicon.ico"><!-- TODO: favicon差し替え -->
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png"><!-- TODO: 180x180で制作 -->
+  <!-- 暫定favicon(データURI・404回避)。TODO: 正式faviconができたら差し替え -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%233A322C'/%3E%3Ctext x='16' y='23' font-size='17' text-anchor='middle' fill='%23F7F4EF' font-family='serif'%3E休%3C/text%3E%3C/svg%3E">
+  <!-- TODO: apple-touch-icon(180x180)制作後に有効化
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  -->
+
+  <!-- LCP画像(ヒーロー1枚目)を先読み。2枚目はJSでロード後に注入する -->
+  <link rel="preload" as="image" href="assets/img/koiwa-gym.jpg"
+        imagesrcset="assets/img/koiwa-gym-960.jpg 960w, assets/img/koiwa-gym.jpg 1600w"
+        imagesizes="100vw" fetchpriority="high">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+  <!-- フォントCSSはレンダーブロックしないよう非同期読込(display=swap前提) -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&display=swap"
+        media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&display=swap">
+  </noscript>
 
   <link rel="stylesheet" href="css/style.css">
 
-  <!--
-    JSON-LD (LocalBusiness) — 残りの仮データ(電話番号・URL)が埋まり次第コメントアウトを解除する。
+  <!-- JSON-LD (LocalBusiness×2店舗)。電話番号を掲載する場合は "telephone" を追加する -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HealthClub",
-    "name": "ひとやすみ",
-    "description": "仕事帰りに、心と身体を整えるパーソナルジム",
-    "address": {
-      "@type": "PostalAddress",
-      "postalCode": "133-0056",
-      "addressRegion": "東京都",
-      "addressLocality": "江戸川区",
-      "streetAddress": "南小岩6-27-13 SKビル3階"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "ひとやすみ 恵比寿店",
+      "description": "仕事帰りに、心と身体を整えるパーソナルジム",
+      "image": "https://hirosetoya-maker.github.io/hitoyasumi/assets/img/ebisu-gym.jpg",
+      "priceRange": "¥18,150〜",
+      "address": {
+        "@type": "PostalAddress",
+        "postalCode": "150-0022",
+        "addressRegion": "東京都",
+        "addressLocality": "渋谷区",
+        "streetAddress": "恵比寿南2-19-7 VORT恵比寿Dual s201"
+      },
+      "openingHours": "Mo-Su 07:00-23:00",
+      "url": "https://hirosetoya-maker.github.io/hitoyasumi/"
     },
-    "telephone": "",
-    "openingHours": "Mo-Su 07:00-23:00",
-    "url": "https://example.github.io/hitoyasumi/"
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthClub",
+      "name": "ひとやすみ 小岩店",
+      "description": "仕事帰りに、心と身体を整えるパーソナルジム",
+      "image": "https://hirosetoya-maker.github.io/hitoyasumi/assets/img/koiwa-gym.jpg",
+      "priceRange": "¥18,150〜",
+      "address": {
+        "@type": "PostalAddress",
+        "postalCode": "133-0056",
+        "addressRegion": "東京都",
+        "addressLocality": "江戸川区",
+        "streetAddress": "南小岩6-27-13 SKビル3階"
+      },
+      "openingHours": "Mo-Su 07:00-23:00",
+      "url": "https://hirosetoya-maker.github.io/hitoyasumi/"
+    }
+  ]
   </script>
-  -->
 </head>
 <body>
 
   <main>
 
-    <!-- 1. ヒーロー(小岩店・写真主役) -->
+    <!-- 1. ヒーロー(恵比寿店⇔小岩店の内装がゆっくりクロスフェード) -->
     <section class="hero" id="hero">
-      <img class="hero__bg" src="assets/img/koiwa-gym.jpg" alt="" width="1600" height="904" fetchpriority="high">
+      <img class="hero__bg" src="assets/img/koiwa-gym.jpg"
+           srcset="assets/img/koiwa-gym-960.jpg 960w, assets/img/koiwa-gym.jpg 1600w"
+           sizes="100vw" alt="" width="1600" height="904" fetchpriority="high">
+      <!-- 2枚目はLCPと帯域を奪い合わないよう、ロード完了後にJSがsrcを注入してから重ねる -->
+      <img class="hero__bg hero__bg--alt" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+           data-src="assets/img/ebisu-gym.jpg"
+           data-srcset="assets/img/ebisu-gym-960.jpg 960w, assets/img/ebisu-gym.jpg 1600w"
+           sizes="100vw" alt="" width="1600" height="1193" aria-hidden="true">
       <div class="hero__veil" aria-hidden="true"></div>
       <div class="container hero__inner">
         <p class="hero__brand">PRIVATE GYM <span>HITOYASUMI</span></p>
+        <p class="hero__lead">仕事帰りに通える、心と身体のパーソナルジム</p>
         <h1 class="hero__title">ここは、心の重荷を<br>降ろす習慣をつくる場所。</h1>
         <p class="hero__sub"><span>まずは試しに、</span><span>ひとやすみしに来てください。</span></p>
         <div class="cta hero__cta">
@@ -69,7 +115,7 @@
           <!-- TODO: LINE友だち追加URLに差し替え(README参照: lin.ee で全文検索して一括置換) -->
           <a class="cta__button cta__button--ghost" href="https://lin.ee/XXXXXXX" data-cta="hero">LINEで無料体験を予約する</a>
         </div>
-        <p class="hero__place">江戸川区南小岩|7:00–23:00 定休日なし</p>
+        <p class="hero__place">恵比寿・小岩|7:00–23:00 定休日なし</p>
       </div>
     </section>
 
@@ -111,7 +157,10 @@
         <div class="features__grid">
           <article class="card">
             <div class="card__visual">
-              <img class="card__img" src="assets/img/training-scene.jpg" alt="トレーナーが姿勢を確認しながら行うトレーニングのイメージ" width="1200" height="900" loading="lazy">
+              <img class="card__img" src="assets/img/training-scene.jpg"
+                   srcset="assets/img/training-scene-960.jpg 960w, assets/img/training-scene.jpg 1200w"
+                   sizes="(min-width: 768px) 50vw, 100vw"
+                   alt="トレーナーが姿勢を確認しながら行うトレーニングのイメージ" width="1200" height="900" loading="lazy">
               <span class="card__image-note">イメージ</span>
             </div>
             <h3 class="card__title">身体と心の状態にあわせて、動かす</h3>
@@ -119,12 +168,22 @@
           </article>
           <article class="card">
             <div class="card__visual">
-              <img class="card__img" src="assets/img/talk-scene.jpg" alt="トレーニングの合間に落ち着いて対話するイメージ" width="1200" height="900" loading="lazy">
+              <img class="card__img" src="assets/img/talk-scene.jpg"
+                   srcset="assets/img/talk-scene-960.jpg 960w, assets/img/talk-scene.jpg 1200w"
+                   sizes="(min-width: 768px) 50vw, 100vw"
+                   alt="トレーニングの合間に落ち着いて対話するイメージ" width="1200" height="900" loading="lazy">
               <span class="card__image-note">イメージ</span>
             </div>
             <h3 class="card__title">いえない悩みを、話す</h3>
             <p class="card__text">職場でも家庭でもいえないことを、トレーニングの合間にぽつりぽつりと。話すことも、自分を整えることのひとつです。</p>
           </article>
+        </div>
+        <!-- 「動かす」×「話す」の先にある結果 -->
+        <div class="features__result">
+          <span class="features__result-arrow" aria-hidden="true">↓</span>
+          <p class="features__result-lead">動かして、話して、その先に。</p>
+          <h3 class="features__result-title">なりたい自分になれる</h3>
+          <p class="features__result-text">心の重荷を降ろしながら、身体も少しずつ変わっていく。気づけば姿勢が変わり、体型が変わり、毎日が軽やかになっていく。ひとやすみは、なりたい自分に近づいていくための場所です。</p>
         </div>
         <div class="cta cta--mid">
           <!-- TODO: LINE友だち追加URLに差し替え -->
@@ -146,7 +205,10 @@
         <div class="locations__grid">
           <figure class="location">
             <div class="location__visual">
-              <img class="location__img" src="assets/img/ebisu-gym.jpg" alt="木目と黒を基調にしたひとやすみ恵比寿店の店内" width="1600" height="1193" loading="lazy">
+              <img class="location__img" src="assets/img/ebisu-gym.jpg"
+                   srcset="assets/img/ebisu-gym-960.jpg 960w, assets/img/ebisu-gym.jpg 1600w"
+                   sizes="(min-width: 768px) 50vw, 100vw"
+                   alt="木目と黒を基調にしたひとやすみ恵比寿店の店内" width="1600" height="1193" loading="lazy">
             </div>
             <figcaption class="location__caption">
               <span class="location__number">01</span>
@@ -156,7 +218,10 @@
           </figure>
           <figure class="location">
             <div class="location__visual">
-              <img class="location__img" src="assets/img/koiwa-gym.jpg" alt="大きな窓と充実した設備を備えたひとやすみ小岩店の店内" width="1600" height="904" loading="lazy">
+              <img class="location__img" src="assets/img/koiwa-gym.jpg"
+                   srcset="assets/img/koiwa-gym-960.jpg 960w, assets/img/koiwa-gym.jpg 1600w"
+                   sizes="(min-width: 768px) 50vw, 100vw"
+                   alt="大きな窓と充実した設備を備えたひとやすみ小岩店の店内" width="1600" height="904" loading="lazy">
             </div>
             <figcaption class="location__caption">
               <span class="location__number">02</span>
@@ -168,25 +233,33 @@
       </div>
     </section>
 
-    <!-- 6. トレーナー紹介 -->
-    <section class="trainer section fade-in">
+    <!-- 6. トレーナー紹介(3名) -->
+    <section class="trainer section section--alt fade-in">
       <div class="container">
         <h2 class="section__title">トレーナー紹介</h2>
-        <div class="trainer__inner">
-          <!-- TODO: トレーナー実写真に差し替え -->
-          <img class="trainer__photo" src="assets/img/placeholder-trainer.svg" alt="トレーナーの写真" width="480" height="480" loading="lazy">
-          <div class="trainer__body">
-            <!-- TODO: トレーナー氏名・経歴・資格を実データに差し替え -->
-            <p class="trainer__name">山田 太郎<span class="trainer__role">代表トレーナー</span></p>
-            <p class="trainer__bio">仕事に、家庭に、忙しい日常の中で、身体だけでなく心も整えられる場所でありたい。そんな想いから立ち上げた、大人のためのプライベートジムです。</p>
-            <blockquote class="trainer__quote">「ここは、ただ運動をする場所ではありません。心と身体を整えて、毎日を軽やかに生きられるようになるための場所です。今日のあなたに合う過ごし方を、一緒に探します。」</blockquote>
-          </div>
+        <div class="trainers__grid">
+          <!-- TODO: 3名分の実写真・氏名・紹介文(ひとやすみへの想い+ボディメイク)に差し替え -->
+          <article class="trainer-card">
+            <img class="trainer-card__photo" src="assets/img/placeholder-trainer.svg" alt="トレーナーの写真" width="480" height="480" loading="lazy">
+            <p class="trainer-card__name">◯◯ ◯◯<span class="trainer-card__role">トレーナー</span></p>
+            <p class="trainer-card__bio">かつて自分自身、仕事に追われて心も身体も置き去りにしていた時期がありました。だからこそ、ここを「頑張る場所」ではなく「整える場所」にしたい。ボディメイクの知識をもとに、無理なく身体が変わっていく道筋を一緒に描きます。</p>
+          </article>
+          <article class="trainer-card">
+            <img class="trainer-card__photo" src="assets/img/placeholder-trainer.svg" alt="トレーナーの写真" width="480" height="480" loading="lazy">
+            <p class="trainer-card__name">◯◯ ◯◯<span class="trainer-card__role">トレーナー</span></p>
+            <p class="trainer-card__bio">話すことで軽くなる心と、動くことで整う身体。その両方を大切にしています。得意分野は姿勢改善とボディラインづくり。今日のあなたの状態に合わせて、ちょうどいい一歩を提案します。</p>
+          </article>
+          <article class="trainer-card">
+            <img class="trainer-card__photo" src="assets/img/placeholder-trainer.svg" alt="トレーナーの写真" width="480" height="480" loading="lazy">
+            <p class="trainer-card__name">◯◯ ◯◯<span class="trainer-card__role">トレーナー</span></p>
+            <p class="trainer-card__bio">トレーニングは、自分を大切にする時間だと思っています。筋力アップからダイエットまで、目標に合わせたボディメイクをサポート。まずは肩の力を抜いて、話しながら身体を動かしましょう。</p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- 7. お客様の声 -->
-    <section class="voices section section--alt fade-in">
+    <section class="voices section fade-in">
       <div class="container">
         <h2 class="section__title">お客様の声</h2>
         <!-- TODO: 実際のお客様の声(掲載許可済みのもの)に差し替え -->
@@ -208,29 +281,34 @@
     </section>
 
     <!-- 8. 料金 -->
-    <section class="pricing section fade-in">
+    <section class="pricing section section--alt fade-in">
       <div class="container">
         <h2 class="section__title">料金プラン</h2>
-        <p class="pricing__lead">月ごとの回数変更が可能。継続期間の縛りもありません。<!-- TODO: 入会金等の実データ確認 --></p>
-        <div class="pricing__grid">
-          <!-- TODO: 全プランを実データに差し替え(現在は仮の金額) -->
-          <article class="plan">
-            <h3 class="plan__name">月2回プラン</h3>
-            <p class="plan__price">¥13,200<span class="plan__unit">/月</span></p>
-            <p class="plan__desc">まずは月2回から。生活のリズムに無理なく組み込みたい方に。</p>
-          </article>
-          <article class="plan plan--featured">
-            <p class="plan__badge">いちばん選ばれています</p>
-            <h3 class="plan__name">月4回プラン</h3>
-            <p class="plan__price">¥24,200<span class="plan__unit">/月</span></p>
-            <p class="plan__desc">週1回の「ひとやすみ」を習慣に。心身の変化を実感しやすいペースです。</p>
-          </article>
-          <article class="plan">
-            <h3 class="plan__name">月8回プラン</h3>
-            <p class="plan__price">¥44,000<span class="plan__unit">/月</span></p>
-            <p class="plan__desc">週2回でしっかり整える。身体の変化も求めたい方に。</p>
-          </article>
+        <p class="pricing__lead">入会金などの追加費用はありません。表示されている料金のみをお支払いいただきます。</p>
+        <div class="pricing__groups">
+          <div class="pricing__group">
+            <h3 class="pricing__group-title">定額プラン<span class="pricing__group-sub">毎月のお支払い</span></h3>
+            <ul class="price-table">
+              <li class="price-table__row"><span class="price-table__label">月2回</span><span class="price-table__price">¥18,150</span></li>
+              <li class="price-table__row"><span class="price-table__label">月4回</span><span class="price-table__price">¥36,058</span></li>
+              <li class="price-table__row"><span class="price-table__label">月6回</span><span class="price-table__price">¥52,635</span></li>
+              <li class="price-table__row"><span class="price-table__label">月8回</span><span class="price-table__price">¥67,760</span></li>
+            </ul>
+          </div>
+          <div class="pricing__group">
+            <h3 class="pricing__group-title">回数券<span class="pricing__group-sub">有効期限なし</span></h3>
+            <ul class="price-table">
+              <li class="price-table__row"><span class="price-table__label">4回</span><span class="price-table__price">¥41,410</span></li>
+              <li class="price-table__row"><span class="price-table__label">8回</span><span class="price-table__price">¥81,312</span></li>
+              <li class="price-table__row"><span class="price-table__label">16回</span><span class="price-table__price">¥160,688</span></li>
+              <li class="price-table__row"><span class="price-table__label">24回</span><span class="price-table__price">¥232,320</span></li>
+            </ul>
+          </div>
         </div>
+        <ul class="pricing__notes">
+          <li class="pricing__note">すべて1回60分・税込です。</li>
+          <li class="pricing__note">恵比寿店限定で、毎週火曜日は理学療法士による整体を受けることもできます。</li>
+        </ul>
         <p class="pricing__pair">パートナーやご友人、ご家族とのペアトレーニングは、1名分の料金のままご利用いただけます。</p>
         <ul class="assurance">
           <li class="assurance__item">体験だけでもOK</li>
@@ -250,7 +328,7 @@
     </section>
 
     <!-- 9. 体験の流れ -->
-    <section class="flow section section--alt fade-in">
+    <section class="flow section fade-in">
       <div class="container">
         <h2 class="section__title">無料体験当日までの流れ</h2>
         <ol class="flow__list">
@@ -275,7 +353,7 @@
     </section>
 
     <!-- 10. FAQ -->
-    <section class="faq section fade-in">
+    <section class="faq section section--alt fade-in">
       <div class="container">
         <h2 class="section__title">よくあるご質問</h2>
         <details class="faq__item">
@@ -302,20 +380,33 @@
     </section>
 
     <!-- 11. アクセス -->
-    <section class="access section section--alt fade-in">
+    <section class="access section fade-in">
       <div class="container">
         <h2 class="section__title">アクセス・営業時間</h2>
-        <div class="access__card">
-          <dl class="access__info">
-            <div class="access__row"><dt>住所</dt><dd>〒133-0056 東京都江戸川区南小岩6-27-13 SKビル3階</dd></div>
-            <!-- TODO: 最寄駅からの徒歩分数を確認 -->
-            <div class="access__row"><dt>最寄駅</dt><dd>JR総武線「小岩駅」徒歩◯分</dd></div>
-            <div class="access__row"><dt>営業時間</dt><dd>7:00–23:00</dd></div>
-            <div class="access__row"><dt>定休日</dt><dd>なし</dd></div>
-          </dl>
-          <p class="access__branch">※ 恵比寿にも店舗がございます。ご希望の方はLINEでお申し付けください。</p>
-          <!-- 地図はファサードパターン: iframe直埋めはスクロールジャックと重いJS読込を招くためリンクにする -->
-          <a class="access__map" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B1%9F%E6%88%B8%E5%B7%9D%E5%8C%BA%E5%8D%97%E5%B0%8F%E5%B2%A96-27-13" target="_blank" rel="noopener">Googleマップで開く</a>
+        <div class="access__grid">
+          <div class="access__card">
+            <h3 class="access__store">恵比寿店</h3>
+            <dl class="access__info">
+              <div class="access__row"><dt>住所</dt><dd>〒150-0022 東京都渋谷区恵比寿南2丁目19-7 VORT恵比寿Dual s201</dd></div>
+              <!-- TODO: 恵比寿駅からの徒歩分数を確認 -->
+              <div class="access__row"><dt>最寄駅</dt><dd>JR・東京メトロ「恵比寿駅」徒歩◯分</dd></div>
+              <div class="access__row"><dt>営業時間</dt><dd>7:00–23:00</dd></div>
+              <div class="access__row"><dt>定休日</dt><dd>なし</dd></div>
+            </dl>
+            <!-- 地図はファサードパターン: iframe直埋めはスクロールジャックと重いJS読込を招くためリンクにする -->
+            <a class="access__map" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B8%8B%E8%B0%B7%E5%8C%BA%E6%81%B5%E6%AF%94%E5%AF%BF%E5%8D%972-19-7%20VORT%E6%81%B5%E6%AF%94%E5%AF%BFDual" target="_blank" rel="noopener">Googleマップで開く</a>
+          </div>
+          <div class="access__card">
+            <h3 class="access__store">小岩店</h3>
+            <dl class="access__info">
+              <div class="access__row"><dt>住所</dt><dd>〒133-0056 東京都江戸川区南小岩6-27-13 SKビル3階</dd></div>
+              <!-- TODO: 小岩駅からの徒歩分数を確認 -->
+              <div class="access__row"><dt>最寄駅</dt><dd>JR総武線「小岩駅」徒歩◯分</dd></div>
+              <div class="access__row"><dt>営業時間</dt><dd>7:00–23:00</dd></div>
+              <div class="access__row"><dt>定休日</dt><dd>なし</dd></div>
+            </dl>
+            <a class="access__map" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%B1%9F%E6%88%B8%E5%B7%9D%E5%8C%BA%E5%8D%97%E5%B0%8F%E5%B2%A96-27-13" target="_blank" rel="noopener">Googleマップで開く</a>
+          </div>
         </div>
       </div>
     </section>
@@ -331,7 +422,7 @@
             <svg class="cta__icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 5.64 2 10.13c0 4.03 3.55 7.4 8.34 8.04.33.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1 .88.55 1.08-.46 5.83-3.44 7.96-5.89C21.4 13.5 22 11.9 22 10.13 22 5.64 17.52 2 12 2z"/></svg>
             LINEで無料体験を予約する
           </a>
-          <p class="cta__note cta__note--invert">友だち追加後、トークで日程を選ぶだけ。無理な勧誘はしません。</p>
+          <p class="cta__note cta__note--invert">友だち追加後、トークで日程を選ぶだけ。無理な勧誘はしません。<br>体験を迷っている段階のご質問だけでも構いません。</p>
         </div>
       </div>
     </section>
