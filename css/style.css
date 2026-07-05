@@ -514,6 +514,34 @@ a { color: inherit; }
   text-align: left;
   font-size: 0.95rem;
 }
+.trainer-card__more {
+  width: 100%;
+  text-align: left;
+}
+@media (min-width: 640px) {
+  .trainer-card__more { grid-column: 2; }
+}
+.trainer-card__more::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition: block-size 0.3s ease, content-visibility 0.3s allow-discrete;
+}
+.trainer-card__more[open]::details-content { block-size: auto; }
+.trainer-card__more-q {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  list-style: none;
+}
+.trainer-card__more-q::-webkit-details-marker { display: none; }
+.trainer-card__more-a {
+  padding-top: var(--space-2);
+  display: grid;
+  gap: 0.75em;
+  line-height: var(--leading-ui);
+  font-size: 0.95rem;
+}
 
 /* ==========================================================
    6. お客様の声
@@ -874,6 +902,7 @@ body.has-sticky-cta .footer { padding-bottom: calc(var(--space-4) + 80px); }
   .location__img,
   .faq__q::after,
   .faq__item::details-content,
+  .trainer-card__more::details-content,
   .sticky-cta {
     transition: none !important;
   }
