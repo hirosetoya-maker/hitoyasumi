@@ -482,11 +482,10 @@ a { color: inherit; }
   .trainer-card {
     grid-template-columns: auto 1fr;
     column-gap: var(--space-4);
-    align-items: center;
+    align-items: start;
     justify-items: start;
     text-align: left;
   }
-  .trainer-card__photo { grid-row: 1 / 3; }
 }
 .trainer-card__photo {
   width: 160px;
@@ -494,6 +493,10 @@ a { color: inherit; }
   border-radius: 50%;
   object-fit: cover;
   box-shadow: var(--shadow);
+}
+.trainer-card__body {
+  display: grid;
+  gap: 0.75em;
 }
 .trainer-card__name {
   font-weight: 600;
@@ -512,34 +515,6 @@ a { color: inherit; }
 .trainer-card__bio {
   line-height: var(--leading-ui);
   text-align: left;
-  font-size: 0.95rem;
-}
-.trainer-card__more {
-  width: 100%;
-  text-align: left;
-}
-@media (min-width: 640px) {
-  .trainer-card__more { grid-column: 2; }
-}
-.trainer-card__more::details-content {
-  block-size: 0;
-  overflow: hidden;
-  transition: block-size 0.3s ease, content-visibility 0.3s allow-discrete;
-}
-.trainer-card__more[open]::details-content { block-size: auto; }
-.trainer-card__more-q {
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  list-style: none;
-}
-.trainer-card__more-q::-webkit-details-marker { display: none; }
-.trainer-card__more-a {
-  padding-top: var(--space-2);
-  display: grid;
-  gap: 0.75em;
-  line-height: var(--leading-ui);
   font-size: 0.95rem;
 }
 
@@ -902,7 +877,6 @@ body.has-sticky-cta .footer { padding-bottom: calc(var(--space-4) + 80px); }
   .location__img,
   .faq__q::after,
   .faq__item::details-content,
-  .trainer-card__more::details-content,
   .sticky-cta {
     transition: none !important;
   }
