@@ -554,6 +554,51 @@ a { color: inherit; }
   color: var(--color-primary);
   text-align: right;
 }
+.voices__videos {
+  margin-top: var(--space-5);
+  text-align: center;
+}
+.voices__videos-title {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+.video-placeholder {
+  max-width: 640px;
+  aspect-ratio: 16 / 9;
+  margin-inline: auto;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.5em;
+  padding: var(--space-3);
+  background: var(--color-bg-alt);
+  border: 1px dashed rgb(58 50 44 / 25%);
+  border-radius: var(--radius);
+}
+.video-placeholder__icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-size: 1.1rem;
+}
+.video-placeholder__badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.video-placeholder__text {
+  font-size: 0.9rem;
+  color: var(--color-primary);
+}
 
 /* ==========================================================
    7. 料金
