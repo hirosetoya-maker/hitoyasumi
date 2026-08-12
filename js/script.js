@@ -2,6 +2,51 @@
 // ※ .jsゲートのclass付与はFOUC防止のため index.html の<head>内インラインscriptで行う
 
 // ----------------------------------------------------------
+// ハンバーガーナビ(全ページ共通)
+// ----------------------------------------------------------
+(() => {
+  const menuBtn = document.getElementById('menu-btn');
+  const nav = document.getElementById('site-nav');
+  if (!menuBtn || !nav) return;
+
+  const close = () => {
+    nav.classList.remove('is-open');
+    menuBtn.classList.remove('is-active');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  };
+  const toggle = () => {
+    const open = nav.classList.toggle('is-open');
+    menuBtn.classList.toggle('is-active', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('nav-open', open);
+  };
+
+  menuBtn.addEventListener('click', toggle);
+  nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+      close();
+      menuBtn.focus();
+    }
+  });
+})();
+
+// ----------------------------------------------------------
+// ヘッダー背景: ヒーローのあるページのみ、ヒーロー通過後に下地+ぼかしを付与
+// (ヒーローのないページは body.page--sub のCSSで常時付与済み)
+// ----------------------------------------------------------
+(() => {
+  const header = document.querySelector('.site-header');
+  const hero = document.getElementById('hero');
+  if (!header || !hero) return;
+  new IntersectionObserver((entries) => {
+    const passed = !entries[entries.length - 1].isIntersecting;
+    header.classList.toggle('site-header--solid', passed);
+  }).observe(hero);
+})();
+
+// ----------------------------------------------------------
 // ヒーロー2枚目(恵比寿店): LCPと帯域を奪い合わないよう、
 // ページロード完了後にsrcを注入し、画像ロード完了後にクロスフェード開始
 // ----------------------------------------------------------
@@ -63,6 +108,19 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ----------------------------------------------------------
+// メソッド記事: 目次を通過したら「目次へ戻る」ボタンを表示
+// ----------------------------------------------------------
+(() => {
+  const toc = document.getElementById('toc');
+  const fab = document.querySelector('.toc-fab');
+  if (!toc || !fab) return;
+  new IntersectionObserver((entries) => {
+    const show = !entries[entries.length - 1].isIntersecting;
+    fab.classList.toggle('is-shown', show);
+  }, { rootMargin: '-72px 0px 0px 0px' }).observe(toc);
+})();
+
+// ----------------------------------------------------------
 // フェードイン(IntersectionObserver)
 // ----------------------------------------------------------
 const fadeObserver = new IntersectionObserver((entries) => {
@@ -83,25 +141,40 @@ const stickyCta = document.getElementById('sticky-cta');
 const hero = document.getElementById('hero');
 const closing = document.getElementById('closing');
 
-let heroPassed = false;
-let closingVisible = false;
+if (stickyCta && hero && closing) {
+  // LPページ: ヒーロー通過後に表示、クロージングCTA可視中は非表示
+  let heroPassed = false;
+  let closingVisible = false;
 
-function updateStickyCta() {
-  const show = heroPassed && !closingVisible;
-  stickyCta.classList.toggle('is-shown', show);
-  stickyCta.setAttribute('aria-hidden', String(!show));
-  // 非表示中はフォーカス対象から除外
-  stickyCta.querySelector('a').tabIndex = show ? 0 : -1;
-  document.body.classList.toggle('has-sticky-cta', show);
+  function updateStickyCta() {
+    const show = heroPassed && !closingVisible;
+    stickyCta.classList.toggle('is-shown', show);
+    stickyCta.setAttribute('aria-hidden', String(!show));
+    // 非表示中はフォーカス対象から除外
+    stickyCta.querySelector('a').tabIndex = show ? 0 : -1;
+    document.body.classList.toggle('has-sticky-cta', show);
+  }
+
+  // コールバックは複数エントリをバッチで受け取ることがあるため、常に最新のエントリで判定する
+  new IntersectionObserver((entries) => {
+    heroPassed = !entries[entries.length - 1].isIntersecting;
+    updateStickyCta();
+  }).observe(hero);
+
+  new IntersectionObserver((entries) => {
+    closingVisible = entries[entries.length - 1].isIntersecting;
+    updateStickyCta();
+  }, { threshold: 0.2 }).observe(closing);
+} else if (stickyCta) {
+  // ヒーロー/クロージングのないページ(メソッド記事等): 一定量スクロールしたら表示
+  const showAfter = 500;
+  const update = () => {
+    const show = window.scrollY > showAfter;
+    stickyCta.classList.toggle('is-shown', show);
+    stickyCta.setAttribute('aria-hidden', String(!show));
+    stickyCta.querySelector('a').tabIndex = show ? 0 : -1;
+    document.body.classList.toggle('has-sticky-cta', show);
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 }
-
-// コールバックは複数エントリをバッチで受け取ることがあるため、常に最新のエントリで判定する
-new IntersectionObserver((entries) => {
-  heroPassed = !entries[entries.length - 1].isIntersecting;
-  updateStickyCta();
-}).observe(hero);
-
-new IntersectionObserver((entries) => {
-  closingVisible = entries[entries.length - 1].isIntersecting;
-  updateStickyCta();
-}, { threshold: 0.2 }).observe(closing);
