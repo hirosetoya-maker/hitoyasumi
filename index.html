@@ -19,7 +19,7 @@
   <meta property="og:title" content="ひとやすみ|仕事帰りに、心と身体を整えるパーソナルジム">
   <meta property="og:description" content="ここは、心の重荷を降ろす習慣をつくる場所。無料体験受付中。まずは試しにひとやすみしに来てください。">
   <meta property="og:url" content="https://hirosetoya-maker.github.io/hitoyasumi/">
-  <meta property="og:image" content="https://hirosetoya-maker.github.io/hitoyasumi/assets/img/koiwa-gym.jpg"><!-- TODO: 専用OGP画像(1200x630)制作後に差し替え -->
+  <meta property="og:image" content="https://hirosetoya-maker.github.io/hitoyasumi/assets/img/koiwa-gym.jpg?v=2"><!-- TODO: 専用OGP画像(1200x630)制作後に差し替え -->
   <meta property="og:image:width" content="1600">
   <meta property="og:image:height" content="1067">
   <meta property="og:site_name" content="ひとやすみ">
@@ -34,8 +34,8 @@
   -->
 
   <!-- LCP画像(ヒーロー1枚目)を先読み。2枚目はJSでロード後に注入する -->
-  <link rel="preload" as="image" href="assets/img/koiwa-gym.jpg"
-        imagesrcset="assets/img/koiwa-gym-960.jpg 960w, assets/img/koiwa-gym.jpg 1600w"
+  <link rel="preload" as="image" href="assets/img/koiwa-gym.jpg?v=2"
+        imagesrcset="assets/img/koiwa-gym-960.jpg?v=2 960w, assets/img/koiwa-gym.jpg?v=2 1600w"
         imagesizes="100vw" fetchpriority="high">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +58,7 @@
       "@type": "HealthClub",
       "name": "ひとやすみ 恵比寿店",
       "description": "仕事帰りに、心と身体を整えるパーソナルジム",
-      "image": "https://hirosetoya-maker.github.io/hitoyasumi/assets/img/ebisu-gym.jpg",
+      "image": "https://hirosetoya-maker.github.io/hitoyasumi/assets/img/ebisu-gym.jpg?v=2",
       "priceRange": "¥18,150〜",
       "address": {
         "@type": "PostalAddress",
@@ -75,7 +75,7 @@
       "@type": "HealthClub",
       "name": "ひとやすみ 小岩店",
       "description": "仕事帰りに、心と身体を整えるパーソナルジム",
-      "image": "https://hirosetoya-maker.github.io/hitoyasumi/assets/img/koiwa-gym.jpg",
+      "image": "https://hirosetoya-maker.github.io/hitoyasumi/assets/img/koiwa-gym.jpg?v=2",
       "priceRange": "¥18,150〜",
       "address": {
         "@type": "PostalAddress",
@@ -114,13 +114,13 @@
 
     <!-- 1. ヒーロー(恵比寿店⇔小岩店の内装がゆっくりクロスフェード) -->
     <section class="hero" id="hero">
-      <img class="hero__bg" src="assets/img/koiwa-gym.jpg"
-           srcset="assets/img/koiwa-gym-960.jpg 960w, assets/img/koiwa-gym.jpg 1600w"
+      <img class="hero__bg" src="assets/img/koiwa-gym.jpg?v=2"
+           srcset="assets/img/koiwa-gym-960.jpg?v=2 960w, assets/img/koiwa-gym.jpg?v=2 1600w"
            sizes="100vw" alt="" width="1600" height="1067" fetchpriority="high">
       <!-- 2枚目はLCPと帯域を奪い合わないよう、ロード完了後にJSがsrcを注入してから重ねる -->
       <img class="hero__bg hero__bg--alt" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-           data-src="assets/img/ebisu-gym.jpg"
-           data-srcset="assets/img/ebisu-gym-960.jpg 960w, assets/img/ebisu-gym.jpg 1600w"
+           data-src="assets/img/ebisu-gym.jpg?v=2"
+           data-srcset="assets/img/ebisu-gym-960.jpg?v=2 960w, assets/img/ebisu-gym.jpg?v=2 1600w"
            sizes="100vw" alt="" width="1600" height="900" aria-hidden="true">
       <div class="hero__veil" aria-hidden="true"></div>
       <div class="container hero__inner">
@@ -207,8 +207,8 @@
         <div class="locations__grid">
           <figure class="location">
             <div class="location__visual">
-              <img class="location__img" src="assets/img/ebisu-gym.jpg"
-                   srcset="assets/img/ebisu-gym-960.jpg 960w, assets/img/ebisu-gym.jpg 1600w"
+              <img class="location__img" src="assets/img/ebisu-gym.jpg?v=2"
+                   srcset="assets/img/ebisu-gym-960.jpg?v=2 960w, assets/img/ebisu-gym.jpg?v=2 1600w"
                    sizes="(min-width: 768px) 50vw, 100vw"
                    alt="木目と黒を基調にしたひとやすみ恵比寿店の店内" width="1600" height="900" loading="lazy">
             </div>
@@ -220,8 +220,8 @@
           </figure>
           <figure class="location">
             <div class="location__visual">
-              <img class="location__img" src="assets/img/koiwa-gym.jpg"
-                   srcset="assets/img/koiwa-gym-960.jpg 960w, assets/img/koiwa-gym.jpg 1600w"
+              <img class="location__img" src="assets/img/koiwa-gym.jpg?v=2"
+                   srcset="assets/img/koiwa-gym-960.jpg?v=2 960w, assets/img/koiwa-gym.jpg?v=2 1600w"
                    sizes="(min-width: 768px) 50vw, 100vw"
                    alt="大きな窓と充実した設備を備えたひとやすみ小岩店の店内" width="1600" height="1067" loading="lazy">
             </div>
