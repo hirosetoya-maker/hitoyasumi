@@ -21,7 +21,7 @@
   <meta property="og:url" content="https://hirosetoya-maker.github.io/hitoyasumi/">
   <meta property="og:image" content="https://hirosetoya-maker.github.io/hitoyasumi/assets/img/koiwa-gym.jpg"><!-- TODO: 専用OGP画像(1200x630)制作後に差し替え -->
   <meta property="og:image:width" content="1600">
-  <meta property="og:image:height" content="904">
+  <meta property="og:image:height" content="1067">
   <meta property="og:site_name" content="ひとやすみ">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
@@ -116,12 +116,12 @@
     <section class="hero" id="hero">
       <img class="hero__bg" src="assets/img/koiwa-gym.jpg"
            srcset="assets/img/koiwa-gym-960.jpg 960w, assets/img/koiwa-gym.jpg 1600w"
-           sizes="100vw" alt="" width="1600" height="904" fetchpriority="high">
+           sizes="100vw" alt="" width="1600" height="1067" fetchpriority="high">
       <!-- 2枚目はLCPと帯域を奪い合わないよう、ロード完了後にJSがsrcを注入してから重ねる -->
       <img class="hero__bg hero__bg--alt" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
            data-src="assets/img/ebisu-gym.jpg"
            data-srcset="assets/img/ebisu-gym-960.jpg 960w, assets/img/ebisu-gym.jpg 1600w"
-           sizes="100vw" alt="" width="1600" height="1193" aria-hidden="true">
+           sizes="100vw" alt="" width="1600" height="900" aria-hidden="true">
       <div class="hero__veil" aria-hidden="true"></div>
       <div class="container hero__inner">
         <p class="hero__brand">PRIVATE GYM <span>HITOYASUMI</span></p>
@@ -172,37 +172,18 @@
       <div class="container">
         <h2 class="section__title">ひとやすみでできること</h2>
         <div class="features__grid">
-          <article class="card">
-            <div class="card__visual">
-              <img class="card__img" src="assets/img/training-scene.jpg"
-                   srcset="assets/img/training-scene-960.jpg 960w, assets/img/training-scene.jpg 1200w"
-                   sizes="(min-width: 768px) 50vw, 100vw"
-                   alt="トレーナーが姿勢を確認しながら行うトレーニングのイメージ" width="1200" height="900" loading="lazy">
-              <span class="card__image-note">イメージ</span>
-            </div>
+          <article class="card card--text">
+            <!-- TODO: 写真が用意できたら、ここに .card__visual（img＋イメージ注記）を戻す -->
             <h3 class="card__title">身体と心の状態にあわせて、動かす</h3>
             <p class="card__text">その日の疲れ具合や気分にあわせてメニューを組み立てます。しっかり動きたい日も、ゆるめたい日も、基準はあなたのペース。こちらから追い込むことはありません。</p>
           </article>
-          <article class="card">
-            <div class="card__visual">
-              <img class="card__img" src="assets/img/talk-scene.jpg"
-                   srcset="assets/img/talk-scene-960.jpg 960w, assets/img/talk-scene.jpg 1200w"
-                   sizes="(min-width: 768px) 50vw, 100vw"
-                   alt="トレーニングの合間に落ち着いて対話するイメージ" width="1200" height="900" loading="lazy">
-              <span class="card__image-note">イメージ</span>
-            </div>
+          <article class="card card--text">
+            <!-- TODO: 写真が用意できたら、ここに .card__visual（img＋イメージ注記）を戻す -->
             <h3 class="card__title">いえない悩みを、話す</h3>
             <p class="card__text">職場でも家庭でもいえないことを、トレーニングの合間にぽつりぽつりと。話すことも、自分を整えることのひとつです。</p>
           </article>
-          <article class="card">
-            <div class="card__visual">
-              <!-- TODO: 「結果」を表すシーン写真が用意できたら差し替え -->
-              <img class="card__img" src="assets/img/ebisu-gym.jpg"
-                   srcset="assets/img/ebisu-gym-960.jpg 960w, assets/img/ebisu-gym.jpg 1600w"
-                   sizes="(min-width: 768px) 33vw, 100vw"
-                   alt="整えられた店内で軽やかに過ごすイメージ" width="1600" height="1193" loading="lazy">
-              <span class="card__image-note">イメージ</span>
-            </div>
+          <article class="card card--text">
+            <!-- TODO: 写真が用意できたら、ここに .card__visual（img＋イメージ注記）を戻す -->
             <h3 class="card__title">気づけば、なりたい自分になっている</h3>
             <p class="card__text">心の重荷を降ろしながら、続けるうちに姿勢が変わり、体型が変わり、毎日が軽やかになっていく。ひとやすみは、そのための場所です。</p>
           </article>
@@ -229,7 +210,7 @@
               <img class="location__img" src="assets/img/ebisu-gym.jpg"
                    srcset="assets/img/ebisu-gym-960.jpg 960w, assets/img/ebisu-gym.jpg 1600w"
                    sizes="(min-width: 768px) 50vw, 100vw"
-                   alt="木目と黒を基調にしたひとやすみ恵比寿店の店内" width="1600" height="1193" loading="lazy">
+                   alt="木目と黒を基調にしたひとやすみ恵比寿店の店内" width="1600" height="900" loading="lazy">
             </div>
             <figcaption class="location__caption">
               <span class="location__number">01</span>
@@ -242,7 +223,7 @@
               <img class="location__img" src="assets/img/koiwa-gym.jpg"
                    srcset="assets/img/koiwa-gym-960.jpg 960w, assets/img/koiwa-gym.jpg 1600w"
                    sizes="(min-width: 768px) 50vw, 100vw"
-                   alt="大きな窓と充実した設備を備えたひとやすみ小岩店の店内" width="1600" height="904" loading="lazy">
+                   alt="大きな窓と充実した設備を備えたひとやすみ小岩店の店内" width="1600" height="1067" loading="lazy">
             </div>
             <figcaption class="location__caption">
               <span class="location__number">02</span>

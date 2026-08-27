@@ -531,6 +531,8 @@ body.page--sub > main { padding-top: 60px; }
   padding: var(--space-2) var(--space-3) var(--space-4);
   line-height: var(--leading-ui);
 }
+/* 写真なし（テキストのみ）カード: 上に余白を足して窮屈さをなくす */
+.card--text .card__title { padding-top: var(--space-4); }
 
 /* ==========================================================
    5. 店舗紹介
