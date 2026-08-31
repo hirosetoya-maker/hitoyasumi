@@ -1121,11 +1121,18 @@ body.page--sub > main { padding-top: 60px; }
   border-radius: 50%;
   background: var(--color-bg-alt);
   color: var(--color-accent);
+  /* 明るい背景: 主線=チャコール / 差し色=深紅 */
+  --icon-main: var(--color-primary);
+  --icon-accent: var(--color-accent);
 }
 .method-icon svg { width: 26px; height: 26px; }
+/* インラインSVGアイコンの色管理（プレゼンテーション属性ではCSS変数が効かないためクラスで指定） */
+.method-icon .mi-main { stroke: var(--icon-main); }
+.method-icon .mi-accent { stroke: var(--icon-accent); }
+.method-icon .mi-accent-fill { fill: var(--icon-accent); }
 .method-grid__card .method-icon { margin-bottom: 0.3em; }
-/* page-intro(記事ページ上部・チャコール反転)用: 淡いリングに載せる */
-.page-intro .method-icon { background: rgb(247 244 239 / 12%); color: var(--color-on-dark); margin-inline: auto; margin-bottom: var(--space-2); }
+/* page-intro(記事ページ上部・チャコール反転)用: 淡いリングに載せ、単色（生成り）反転 */
+.page-intro .method-icon { background: rgb(247 244 239 / 12%); color: var(--color-on-dark); margin-inline: auto; margin-bottom: var(--space-2); --icon-main: var(--color-on-dark); --icon-accent: var(--color-on-dark); }
 .method-grid__number { font-size: 0.75rem; letter-spacing: 0.25em; color: var(--color-accent); }
 .method-grid__title { font-weight: 600; font-size: 1.15rem; letter-spacing: var(--tracking-wide); color: var(--color-primary); }
 .method-grid__text { font-size: 0.92rem; line-height: var(--leading-ui); }
@@ -1232,21 +1239,37 @@ body.has-sticky-cta .toc-fab { bottom: calc(var(--space-3) + 72px); }
 
 /* ---- 姿勢比較イラスト ---- */
 .posture-compare {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: var(--space-5);
-  flex-wrap: wrap;
   margin: var(--space-3) 0 var(--space-4);
-  padding: var(--space-3);
   background: var(--color-bg-alt);
   border-radius: var(--radius);
+  overflow: hidden;
 }
-.posture-compare__item { text-align: center; color: var(--color-primary); }
-.posture-compare__item--bad { color: var(--color-accent); }
-.posture-compare__item svg { display: block; margin-inline: auto; }
-.posture-compare__item figcaption { margin-top: 0.5em; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; }
-.posture-compare__item figcaption span { display: block; margin-top: 0.2em; font-size: 0.75rem; font-weight: 400; opacity: 0.75; letter-spacing: 0; }
+.posture-compare__image { display: block; width: 100%; height: auto; }
+.posture-compare__captions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgb(58 50 44 / 12%);
+  color: var(--color-primary);
+  text-align: center;
+}
+.posture-compare__captions > span { padding: 0.9rem 0.6rem 1rem; }
+.posture-compare__captions > span[aria-hidden] + span[aria-hidden] { border-left: 1px solid rgb(58 50 44 / 12%); }
+.posture-compare__captions strong { display: block; font-size: 0.88rem; letter-spacing: 0.06em; }
+.posture-compare__captions small { display: block; margin-top: 0.35em; font-size: 0.73rem; line-height: 1.65; opacity: 0.72; }
+.posture-compare__summary {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 380px) {
+  .posture-compare__captions strong { min-height: 2.9em; font-size: 0.82rem; letter-spacing: 0.03em; }
+}
 
 /* ---- ケーススタディ ---- */
 .case-grid { display: grid; gap: var(--space-3); margin-top: var(--space-3); }
