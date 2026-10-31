@@ -1355,3 +1355,33 @@ body.has-sticky-cta .footer { padding-bottom: calc(var(--space-4) + 80px); }
     translate: 0 0 !important;
   }
 }
+
+/* ==========================================================
+   オンラインパーソナル(online.html)だけのトーン
+   ブランドの骨格(明朝・字間・角丸最小限)はそのままに、
+   差し色と地の色を藍寄りの寒色へ振って「店舗とは別ライン」を感じさせる。
+   コントラストは現行と同等(深紅6.92:1 → 藍6.86:1、濃色11.44:1 → 11.58:1)。
+   ========================================================== */
+.page--online {
+  --color-bg: #F6F6F4;          /* ほぼ無彩に寄せた生成り */
+  --color-bg-alt: #EAECEE;      /* 寒色のペールグレー */
+  --color-ink: #333A3E;         /* 青みのある本文色 */
+  --color-primary: #2A343B;     /* 青みのある濃炭(見出し・反転地) */
+  --color-accent: #2B5A6E;      /* 藍(差し色) */
+  --color-on-dark: #F4F6F6;
+  --shadow: 0 2px 20px rgb(42 52 59 / 9%);
+  --rule: 42 52 59;             /* 罫線・枠線の基準色 */
+}
+/* 反転地はわずかなグラデーションで奥行きを出す(画面越しの静けさ) */
+.page--online .page-intro,
+.page--online .closing { background: linear-gradient(170deg, #2F3A42, #242D33); }
+
+/* 既定の茶系ハーフトーン罫を、寒色基準に差し替える */
+.page--online .worries__item,
+.page--online .assurance__item,
+.page--online .method-teaser__tags li { border-color: rgb(var(--rule) / 22%); }
+.page--online .price-table__row { border-bottom-color: rgb(var(--rule) / 16%); }
+.page--online .flow__step::after { background: rgb(var(--rule) / 25%); }
+.page--online .article__h2 { border-bottom-color: rgb(var(--rule) / 18%); }
+/* ヘッダーの半透明下地も寒色に(反転地の上で色がずれないように) */
+body.page--online .site-header { background: rgb(var(--rule) / 78%); }

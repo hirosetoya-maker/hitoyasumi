@@ -16,7 +16,8 @@ PAGES = [
          sub="仕事帰りに、<br>心と身体を整える"),
     dict(slug="online", label="ひとやすみ", num="",
          title="オンライン<br>パーソナル", size=92,
-         sub="日々の生活まで、一緒に整えていく"),
+         sub="日々の生活まで、一緒に整えていく",
+         bg="linear-gradient(170deg,#2F3A42,#242D33)", rule="#6D9FB5"),
     dict(slug="method", label="パーソナルジム ひとやすみ", num="",
          title="ひとやすみ<br>メソッド", size=100, sub="サポートの土台となる6つの考え方"),
     dict(slug="method-food", num="01", title="食事", size=152,
@@ -37,7 +38,7 @@ TPL = """<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><style>
   *{{margin:0;padding:0;box-sizing:border-box}}
   html,body{{width:1200px;height:630px}}
   body{{
-    background:#3A322C;color:#F7F4EF;
+    background:{bg};color:#F7F4EF;
     font-family:"ヒラギノ明朝 ProN","Hiragino Mincho ProN",serif;
     display:flex;align-items:center;justify-content:center;padding-bottom:78px;
     -webkit-font-smoothing:antialiased;
@@ -45,7 +46,7 @@ TPL = """<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><style>
   .frame{{position:absolute;inset:34px;border:1px solid rgba(247,244,239,.20)}}
   .inner{{position:relative;width:560px;text-align:center}}
   .label{{font-size:27px;letter-spacing:.26em;text-indent:.26em;color:rgba(247,244,239,.70)}}
-  .rule{{width:46px;height:1px;background:#B4564A;margin:22px auto 22px}}
+  .rule{{width:46px;height:1px;background:{rule};margin:22px auto 22px}}
   .num{{font-size:20px;letter-spacing:.34em;text-indent:.34em;
         color:rgba(247,244,239,.42);margin-bottom:14px}}
   .title{{font-size:{size}px;font-weight:600;line-height:1.16;
@@ -69,7 +70,8 @@ TPL = """<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><style>
 for p in PAGES:
     num = '<div class="num">%s / 06</div>' % p["num"] if p["num"] else ""
     doc = TPL.format(size=p["size"], label=p.get("label", "ひとやすみメソッド"),
-                     num=num, title=p["title"], sub=p["sub"])
+                     num=num, title=p["title"], sub=p["sub"],
+                     bg=p.get("bg", "#3A322C"), rule=p.get("rule", "#B4564A"))
     src = os.path.join(TMP, p["slug"] + ".html")
     png2x = os.path.join(TMP, p["slug"] + "@2x.png")
     open(src, "w").write(doc)
