@@ -426,7 +426,12 @@ body.page--sub > main { padding-top: 60px; }
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
   color: var(--color-primary);
+  line-height: var(--leading-ui);
 }
+/* 文節単位で折り返す(.section__title と同じ方式) */
+.worries__bridge span { display: inline-block; }
+/* タグ一覧のあとに本文が続く場合(online.html)の余白 */
+.method-teaser__tags + .article { margin-top: var(--space-4); }
 
 /* ==========================================================
    3. コンセプト(詩)
