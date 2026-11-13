@@ -1363,18 +1363,19 @@ body.has-sticky-cta .footer { padding-bottom: calc(var(--space-4) + 80px); }
    コントラストは現行と同等(深紅6.92:1 → 藍6.86:1、濃色11.44:1 → 11.58:1)。
    ========================================================== */
 .page--online {
-  --color-bg: #F6F6F4;          /* ほぼ無彩に寄せた生成り */
-  --color-bg-alt: #EAECEE;      /* 寒色のペールグレー */
-  --color-ink: #333A3E;         /* 青みのある本文色 */
-  --color-primary: #2A343B;     /* 青みのある濃炭(見出し・反転地) */
-  --color-accent: #2B5A6E;      /* 藍(差し色) */
+  --color-bg: #F7F9F8;          /* ごく淡い寒色の地 */
+  --color-bg-alt: #E6F1F2;      /* ペールティール */
+  --color-ink: #2F3A3E;         /* 青みのある本文色 */
+  --color-primary: #1C5468;     /* ティール(見出し・反転地) */
+  --color-accent: #0D6F89;      /* 鮮やかなティール(差し色) */
   --color-on-dark: #F4F6F6;
-  --shadow: 0 2px 20px rgb(42 52 59 / 9%);
-  --rule: 42 52 59;             /* 罫線・枠線の基準色 */
+  --shadow: 0 2px 20px rgb(28 84 104 / 10%);
+  --rule: 28 84 104;            /* 罫線・枠線の基準色 */
 }
-/* 反転地はわずかなグラデーションで奥行きを出す(画面越しの静けさ) */
+/* 反転地はグラデーションで奥行きを出す。
+   ほぼ黒の濃色だと重く沈むため、彩度のあるティールで明るさと勢いを持たせる */
 .page--online .page-intro,
-.page--online .closing { background: linear-gradient(170deg, #2F3A42, #242D33); }
+.page--online .closing { background: linear-gradient(170deg, #1C6076, #14485A); }
 
 /* 既定の茶系ハーフトーン罫を、寒色基準に差し替える */
 .page--online .worries__item,

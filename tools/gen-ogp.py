@@ -17,7 +17,7 @@ PAGES = [
     dict(slug="online", label="ひとやすみ", num="",
          title="オンライン<br>パーソナル", size=92,
          sub="日々の生活まで、一緒に整えていく",
-         bg="linear-gradient(170deg,#2F3A42,#242D33)", rule="#6D9FB5"),
+         bg="linear-gradient(170deg,#1C6076,#14485A)", rule="#8ED3E4"),
     dict(slug="method", label="パーソナルジム ひとやすみ", num="",
          title="ひとやすみ<br>メソッド", size=100, sub="サポートの土台となる6つの考え方"),
     dict(slug="method-food", num="01", title="食事", size=152,
