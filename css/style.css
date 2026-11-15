@@ -538,29 +538,6 @@ body.page--sub > main { padding-top: 60px; }
 }
 /* 写真なし（テキストのみ）カード: 上に余白を足して窮屈さをなくす */
 .card--text .card__title { padding-top: var(--space-4); }
-/* 箇条書きカード: 行を伸ばさず上揃えにして、カード間で位置をそろえる */
-.card--list { align-content: start; }
-/* カード内の箇条書き（サービス内容を具体的に並べる用） */
-.card__list {
-  padding: var(--space-2) var(--space-3) var(--space-4);
-  display: grid;
-  gap: 0.6em;
-  align-content: start;
-  font-size: 0.95rem;
-  line-height: var(--leading-ui);
-}
-.card__list li { position: relative; padding-left: 1.1em; }
-.card__list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 0.36em;
-  height: 0.36em;
-  border-radius: 50%;
-  background: var(--color-accent);
-}
-
 /* ==========================================================
    5. 店舗紹介
    ========================================================== */
@@ -803,8 +780,32 @@ body.page--sub > main { padding-top: 60px; }
 @media (min-width: 700px) {
   .pricing__groups { grid-template-columns: 1fr 1fr; align-items: start; }
 }
+/* 仕様表（サービス内容など）: 見出し列＋内容列。狭い画面では縦に積む */
+.spec { display: grid; }
+.spec__row {
+  display: grid;
+  gap: 0.35em var(--space-3);
+  padding-block: 0.95em;
+  border-bottom: 1px solid rgb(58 50 44 / 15%);
+}
+.spec__row:last-child { border-bottom: none; padding-bottom: 0; }
+.spec__row:first-child { padding-top: 0; }
+.spec__label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+}
+.spec__value { line-height: var(--leading-ui); }
+@media (min-width: 560px) {
+  .spec__row { grid-template-columns: 7.5rem 1fr; align-items: baseline; }
+  .spec__label { font-size: 0.88rem; letter-spacing: 0.1em; }
+}
+
 /* プランが1つだけのページ（online.html）: 2カラムに流さず中央に単独配置 */
 .pricing__groups--single { max-width: 520px; }
+/* 仕様表のように1行が長い場合は少し広く */
+.pricing__groups--wide { max-width: 660px; }
 @media (min-width: 700px) {
   .pricing__groups--single { grid-template-columns: 1fr; }
 }
@@ -1429,6 +1430,9 @@ body.has-sticky-cta .footer { padding-bottom: calc(var(--space-4) + 80px); }
 .page--online .method-teaser__tags li { border-color: rgb(var(--rule) / 22%); }
 .page--online .price-table__row { border-bottom-color: rgb(var(--rule) / 16%); }
 .page--online .pricing__group .assurance { border-top-color: rgb(var(--rule) / 16%); }
+.page--online .spec__row { border-bottom-color: rgb(var(--rule) / 16%); }
+/* 料金・サービス内容は通常背景の上にも置くため、薄い枠で面を立たせる */
+.page--online .pricing__group { border: 1px solid rgb(var(--rule) / 12%); }
 .page--online .flow__step::after { background: rgb(var(--rule) / 25%); }
 .page--online .article__h2 { border-bottom-color: rgb(var(--rule) / 18%); }
 /* ヘッダーの半透明下地も寒色に(反転地の上で色がずれないように) */

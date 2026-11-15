@@ -16,7 +16,7 @@ PAGES = [
          sub="仕事帰りに、<br>心と身体を整える"),
     dict(slug="online", label="ひとやすみ", num="",
          title="オンライン<br>パーソナル", size=92,
-         sub="日々の生活まで、一緒に整えていく",
+         sub="ジムに通えない方にも、<br>ひとやすみのパーソナルを",
          bg="linear-gradient(170deg,#1C6076,#14485A)", rule="#8ED3E4"),
     dict(slug="method", label="パーソナルジム ひとやすみ", num="",
          title="ひとやすみ<br>メソッド", size=100, sub="サポートの土台となる6つの考え方"),
